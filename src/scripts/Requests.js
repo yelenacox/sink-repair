@@ -3,10 +3,26 @@ import { getRequests, getPlumbers, getCompletions, saveCompletion } from "./data
 export const Requests = () => {
     const requests = getRequests()
     const plumbers = getPlumbers()
+    const completions = getCompletions()
+    
+    //function to see if the request id is present in the completions array (completion.requestId)
+    const isRequestCompleted = (request) => {
+        //the function will be placed inside the requests.map, so it takes request as a parameter (no need to iterate through requests array because the map function will be doing that)
+        for (const completion of completions){
+                //function iterates through completions array
+                if (request.id === completion.requestId){
+                    //if request.id exists in competion.requestId, return false
+                    return false
+                }
+                //otherwise, return true
+            } return true
+    }
 
     let html = `
         <ul>
-            ${requests.map(request => `<li>${request.description}  
+            ${requests.map(request => isRequestCompleted(request) ? 
+                /* invoke isRequestCompleted function with 'request' as parameter. Use ternary operator "?" to return the HTML if the function returns true. */ 
+                `<li>${request.description}  
             
             <select class="plumbers" id="plumbers">
             <option value="0">Choose</option>
@@ -22,14 +38,17 @@ export const Requests = () => {
                 id="request--${request.id}">
             Delete
         </button>
-        </li>`).join("")
+        </li>` 
+        //ternary operator if "false", return empty string. Then "join" whatever comes from the map array
+        : "").join("")
         }
         </ul>
     `
 
     return html
-
 }
+
+
 
 const mainContainer = document.querySelector("#container")
 
@@ -75,7 +94,7 @@ export const Completions = () => {
     })
 
     html += completedRequests.join("")
-    html+= "</ul>"
+    html += "</ul>"
 
     return html
 }
@@ -84,13 +103,13 @@ export const Completions = () => {
 const filterCompletionsByPlumber = (completion) => {
     const plumbers = getPlumbers()
     let selectedPlumber = ""
-        for (const plumber of plumbers) {
-            if (completion.plumberId === plumber.id) {
-                selectedPlumber = plumber.name
+    for (const plumber of plumbers) {
+        if (completion.plumberId === plumber.id) {
+            selectedPlumber = plumber.name
 
-            }
+        }
 
-        
+
     }
     return selectedPlumber
 }
