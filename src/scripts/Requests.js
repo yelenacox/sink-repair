@@ -22,19 +22,19 @@ export const Requests = () => {
         <ul>
             ${requests.map(request => isRequestCompleted(request) ? 
                 /* invoke isRequestCompleted function with 'request' as parameter. Use ternary operator "?" to return the HTML if the function returns true. */ 
-                `<li>${request.description}  
+                `<li class="requests">${request.description}  
             
             <select class="plumbers" id="plumbers">
             <option value="0">Choose</option>
             ${plumbers.map(
         plumber => {
-            return `<option value="${request.id}--${plumber.id}">${plumber.name}</option>`
+            return `<option value="${request.id}--${plumber.id}" class="requests">${plumber.name}</option>`
         }
     ).join("")
         }
         </select>
 
-            <button class="request__delete"
+            <button class="request__delete" "requests"
                 id="request--${request.id}">
             Delete
         </button>

@@ -5,6 +5,10 @@
     font-weight: bold;
 }
 
+.input {
+    margin-right: 50px;
+}
+
 .button {
     margin: 1rem 0 2rem 2rem;
     padding: 0.5rem;
@@ -13,7 +17,24 @@
     font-size: 1rem;
 }
 
+.requestList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 50px 0 30px;
+    background-color: rgb(105, 125, 150);
+    color: white;
+    padding-left: 10px;
+}
+
 .request__delete {
     background-color: #464ea0;
     color: rgb(230, 220, 255);
+    margin-right: 50px;
+}
+
+.requests {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
