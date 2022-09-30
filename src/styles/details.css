@@ -1,0 +1,19 @@
+.field {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 15px;
+    font-weight: bold;
+}
+
+.button {
+    margin: 1rem 0 2rem 2rem;
+    padding: 0.5rem;
+    background-color: #464ea0;
+    color: rgb(230, 220, 255);
+    font-size: 1rem;
+}
+
+.request__delete {
+    background-color: #464ea0;
+    color: rgb(230, 220, 255);
+}
